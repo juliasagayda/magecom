@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<layout>
+    <default>
+        <reference name="content">
+            <block type="core/template" name="my_first_block" template="my/first.phtml" />
+        </reference>
+            </default>
+
+</layout>

@@ -8,13 +8,33 @@
     </modules>
 
     <global>
-        <blocks type="magecom_first/test" template ="magecom/my/first.phtml">
+        <blocks>
             <magecom_first>
                 <class>Magecom_First_Block
                         </class>
             </magecom_first>
         </blocks>
     </global>
+
+    <frontend>
+        <routers>
+            <magecom_first>
+                <use>standard</use>
+                <args>
+                    <module>Magecom_First</module>
+                    <frontName>magecom</frontName>
+                </args>
+            </magecom_first>
+        </routers>
+        <layout>
+            <updates>
+                <magecom_first>
+                    <file>magecom_first.xml</file>
+                </magecom_first>
+            </updates>
+        </layout>
+    </frontend>
+
     <adminhtml>
         <acl>
             <resources>

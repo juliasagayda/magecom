@@ -9,4 +9,11 @@ class Magecom_First_Block_Test extends  Mage_Core_Block_Template {
     public  function  TestFunc() {
         return 'Hello World';
     }
+
+    public function getProducts($name) {
+        $products_collect_by_name = Mage::getModel('catalog/product')->getCollection()
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter('name', array('like' => $name.'%'));
+        return $products_collect_by_name;
+    }
 }

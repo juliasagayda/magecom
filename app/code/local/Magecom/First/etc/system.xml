@@ -45,7 +45,6 @@
                             <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
                         </test_select>
                     </fields>
-
                 </test_group>
             </groups>
         </test>

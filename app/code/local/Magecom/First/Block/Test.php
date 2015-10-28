@@ -6,8 +6,8 @@
  * Time: 9:18 PM
  */
 class Magecom_First_Block_Test extends  Mage_Core_Block_Template {
-    public  function  TestFunc() {
-        return 'Hello World';
+    public function  testFunc() {
+        return 'Julia Block';
     }
 
     public function getProducts($name) {
@@ -15,5 +15,11 @@ class Magecom_First_Block_Test extends  Mage_Core_Block_Template {
             ->addAttributeToSelect('*')
             ->addAttributeToFilter('name', array('like' => $name.'%'));
         return $products_collect_by_name;
+    }
+
+    public function getPosts() {
+        $post_collect = Mage::getModel('magecom_first/posts')->getCollection()
+            ->addAttributeToSelect('*');
+        return $post_collect;
     }
 }

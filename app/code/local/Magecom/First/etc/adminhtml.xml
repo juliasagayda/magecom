@@ -7,40 +7,40 @@
             <sort_order>1000</sort_order>
             <children>
                 <test_child>
-                    <title>
-                        Test Child
-                    </title>
+                    <title>Test Child</title>
+                    <action>adminhtml/order/</action>
                 </test_child>
                 <test_child2>
                     <title>
                         Test Child2
                     </title>
                 </test_child2>
-            </children>
-        </test>
-    </menu>
+                    </children>
+                </test>
+            </menu>
+
     <acl>
         <resources>
-            <admin>
+                <admin>
+        <children>
+            <test>
+                <title>Test</title>
+                <sort_order>1000</sort_order>
                 <children>
-                    <test>
-                        <title>Test</title>
-                        <sort_order>1000</sort_order>
-                        <children>
-                            <test_child>
-                                <title>
-                                    Test Child
-                                </title>
-                            </test_child>
-                            <test_child2>
-                                <title>
-                                    Test Child2
-                                </title>
-                            </test_child2>
-                        </children>
-                    </test>
+                    <test_child>
+                        <title>
+                            Test Child
+                        </title>
+                    </test_child>
+                    <test_child2>
+                        <title>
+                            Test Child2
+                        </title>
+                    </test_child2>
                 </children>
-            </admin>
+            </test>
+        </children>
+        </admin>
         </resources>
     </acl>
 </config>

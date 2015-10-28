@@ -4,15 +4,22 @@
 //var_dump($posts);
 //        }
 ?>
-
+<h1>Add new post</h1>
 <form action="<?php echo Mage::getUrl('magecom/index/saveForm') ?>" method="post" id="my-custom-form">
    <div>
+       <h3>Add title</h3>
        <input type="text" class="input-text required-entry" name="title"/>
        </div>
     <div>
+        <h3>Add content</h3>
     <textarea name="content" class="input-text required-entry" id="" cols="30" rows="10"></textarea>
         </div>
-    <input type="submit"/>
+    <input type="submit"
+           style ="width: 200px;
+            display: block;
+            margin-top: 20px;
+            height: 40px;"
+           class="my-custom-button" value="Add"/>
 </form>
 
 <script type="text/javascript">

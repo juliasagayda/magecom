@@ -1,0 +1,22 @@
+<?php //$posts = $this->getPosts();
+//
+//        foreach($posts as $post) {
+//var_dump($posts);
+//        }
+?>
+
+<form action="<?php echo Mage::getUrl('magecom/index/saveForm') ?>" method="post" id="my-custom-form">
+   <div>
+       <input type="text" class="input-text required-entry" name="title"/>
+       </div>
+    <div>
+    <textarea name="content" class="input-text required-entry" id="" cols="30" rows="10"></textarea>
+        </div>
+    <input type="submit"/>
+</form>
+
+<script type="text/javascript">
+    //< ![CDATA[
+    var customForm = new VarienForm('my-custom-form');
+    //]]>
+</script>

@@ -1,9 +1,12 @@
-<?php //$posts = $this->getPosts();
-//
-//        foreach($posts as $post) {
-//var_dump($posts);
-//        }
+<?php $posts = $this->getPosts();
+
+        foreach($posts as $post) { ?>
+        <h4><?php echo 'Post '. $post->getTitle()?></h4>
+            <div class="desc"><?php echo $post->getContent()?></div>
+            <hr>
+       <?php }
 ?>
+<div class="clearfix"></div>
 <h1>Add new post</h1>
 <form action="<?php echo Mage::getUrl('magecom/index/saveForm') ?>" method="post" id="my-custom-form">
    <div>

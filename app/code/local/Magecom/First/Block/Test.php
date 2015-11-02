@@ -18,8 +18,7 @@ class Magecom_First_Block_Test extends  Mage_Core_Block_Template {
     }
 
     public function getPosts() {
-        $post_collect = Mage::getModel('magecom_first/posts')->getCollection()
-            ->addAttributeToSelect('*');
+        $post_collect = Mage::getModel('magecom_first/posts')->getCollection();
         return $post_collect;
     }
 }

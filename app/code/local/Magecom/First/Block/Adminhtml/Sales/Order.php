@@ -7,13 +7,15 @@
  */
 class Magecom_First_Block_Adminhtml_Sales_Order extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
-    public function __construct()
-    {
-        $this->_blockGroup = 'magecom_first';
-        $this->_controller = 'adminhtml_sales_order';
-        $this->_headerText = Mage::helper('magecom_first')->__('Orders - Magecom');
 
-        parent::__construct();
-        $this->_removeButton('add');
+    protected function _construct()
+    {
+        parent::_construct();
+        $helper = Mage::helper('magecom_first');
+        $this->_blockGroup  =  'magecom_first';
+        $this->_controller = 'adminhtml_sales_order';
+
+        $this->_headerText = $helper->__('Posts Management');
+        $this->_addButtonLabel = $helper->__('Add Posts');
     }
 }

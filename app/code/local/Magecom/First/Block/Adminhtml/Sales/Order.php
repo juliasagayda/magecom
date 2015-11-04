@@ -10,6 +10,7 @@ class Magecom_First_Block_Adminhtml_Sales_Order extends Mage_Adminhtml_Block_Wid
 
     protected function _construct()
     {
+
         parent::_construct();
         $helper = Mage::helper('magecom_first');
         $this->_blockGroup  =  'magecom_first';

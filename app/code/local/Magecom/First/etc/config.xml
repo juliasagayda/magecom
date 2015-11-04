@@ -7,18 +7,34 @@
         </Magecom_First>
     </modules>
     <global>
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <magecom_first>
+                        <class>magecom_first/observer</class>
+                        <method>changeQty</method>
+                    </magecom_first>
+                </observers>
+            </checkout_cart_product_add_after>
+            <model_save_after><!-- observe the event -->
+                <observers>
+                    <magecom_first>
+                        <class>magecom_first/observer</class>
+                        <method>adminEmail</method>
+                    </magecom_first>
+                </observers>
+            </model_save_after>
+        </events>
         <blocks type="magecom_first/test" template ="magento/my/form.phtml">
             <magecom_first>
                 <class>Magecom_First_Block</class>
             </magecom_first>
         </blocks>
-
         <models>
             <magecom_first>
                 <class>Magecom_First_Model</class>
                 <resourceModel>magecom_first_resource</resourceModel>
             </magecom_first>
-
 
         <magecom_first_resource>
             <class>Magecom_First_Model_Resource</class>
@@ -88,5 +104,19 @@
                 </magecom_first>
             </updates>
         </layout>
+
+        <events>
+            <cms_page_render>
+                <observers>
+                    <magecom_first>
+                        <type>singleton</type>
+                        <class>magecom_first_model_observer</class>
+                        <method>doublePrice</method>
+                    </magecom_first>
+                </observers>
+            </cms_page_render>
+        </events>
+
+
     </frontend>
 </config>

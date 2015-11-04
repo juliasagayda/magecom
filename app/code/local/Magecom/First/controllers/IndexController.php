@@ -26,11 +26,11 @@ class Magecom_First_IndexController extends Mage_Core_Controller_Front_Action {
 
     {
 
-        $request =Mage::app()->getRequest()->getParam();
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        Mage::getModel('magecom_first/posts')->load()->setTitle($title)->setContent($content)->save();
-//        $this->_redirect('/');
+        $request =Mage::app()->getRequest()->getParams();
+        $title = $request['title'];
+        $content = $request['content'];
+        Mage::getModel('magecom_first/posts')->setTitle($title)->setContent($content)->save();
+        $this->_forward('index');
 
 
     }

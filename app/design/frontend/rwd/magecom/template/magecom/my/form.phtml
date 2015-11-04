@@ -8,10 +8,12 @@
 ?>
 <div class="clearfix"></div>
 <h1>Add new post</h1>
-<form action="<?php echo Mage::getUrl('magecom/index/saveForm') ?>" method="post" id="my-custom-form">
+<form action="<?php echo Mage::getUrl('magecom/index/saveForm', array(
+)) ?>" method="post" id="my-custom-form">
    <div>
        <h3>Add title</h3>
        <input type="text" class="input-text required-entry" name="title"/>
+       <input type="text" hidden class="input-text required-entry" value="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>" name="url"/>
        </div>
     <div>
         <h3>Add content</h3>

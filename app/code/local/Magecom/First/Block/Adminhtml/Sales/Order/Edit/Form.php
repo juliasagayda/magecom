@@ -50,6 +50,14 @@ class Magecom_First_Block_Adminhtml_Sales_Order_Edit_Form extends Mage_Adminhtml
             'options' => array('1' => 'Enabled','0' => 'Disabled'),
             'disabled' => false,
         ));
+        $fieldset->addField('product_id', 'select', array(
+            'label'     => Mage::helper('magecom_first')->__('Product for this Post'),
+            'title'     => Mage::helper('magecom_first')->__('Product for this Post'),
+            'name'      => 'product_id',
+            'values' => Mage::helper('magecom_first')->getProductList(),
+            'required'  => false,
+            'disabled' => false,
+        ));
 
         $form->setValues($data);
 

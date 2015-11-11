@@ -7,5 +7,15 @@
  */
 class Magecom_First_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    public function getProductList()
+    {
+        $products = Mage::getModel('catalog/product')->getCollection();
+        $products->addAttributeToSelect('name');
+        $output = array();
+        foreach($products as $product){
+            $output[$product->getId()] = $product->getId();
+        }
+        return $output;
+    }
 
 }

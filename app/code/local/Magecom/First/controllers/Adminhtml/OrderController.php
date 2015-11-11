@@ -32,35 +32,47 @@ class Magecom_First_Adminhtml_OrderController extends Mage_Adminhtml_Controller_
         $id = (int) $this->getRequest()->getParam('id');
         Mage::register('posts_data', Mage::getModel('magecom_first/posts')->load($id));
         $this->loadLayout()->_setActiveMenu('order');
-        $this->_addContent($this->getLayout()->createBlock('magecom_first/adminhtml_sales_order_edit_form'));
+        $this->_addContent($this->getLayout()->createBlock('magecom_first/adminhtml_sales_order_edit'));
         $this->renderLayout();
     }
     public function saveAction()
     {
-        $id = $this->getRequest()->getParam('id');
-
+        if ($data = $this->getRequest()->getPost())
+        {
+            $model = Mage::getModel('magecom_first/posts');
+            $id = $this->getRequest()->getParam('id');
+            if ($id) {
+                $model->load($id);
+            }
+            $model->setData($data);
+            Mage::getSingleton('adminhtml/session')->setFormData($data);
             try {
-                $helper = Mage::helper('magecom_first');
-                $model = Mage::getModel('magecom_first/posts');
-                $model->setData($data)->setId($id);
-                if (!$model->getCreated()) {
-                    $model->setCreated(now());
+                if ($id) {
+                    $model->setId($id);
                 }
                 $model->save();
-
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('Post was saved successfully'));
+                if (!$model->getId()) {
+                    Mage::throwException(Mage::helper('magecom_first')->__('Error saving example'));
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('magecom_first')->__('Example was successfully saved.'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-                $this->_redirect('*/*/');
+                // The following line decides if it is a "save" or "save and continue"
+                if ($this->getRequest()->getParam('back')) {
+                    $this->_redirect('*/*/edit', array('id' => $model->getId()));
+                } else {
+                    $this->_redirect('*/*/');
+                }
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                Mage::getSingleton('adminhtml/session')->setFormData($data);
-                $this->_redirect('*/*/edit', array(
-                    'id' => $this->getRequest()->getParam('id')
-                ));
+                if ($model && $model->getId()) {
+                    $this->_redirect('*/*/edit', array('id' => $model->getId()));
+                } else {
+                    $this->_redirect('*/*/');
+                }
             }
             return;
-
-        Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to find item to save'));
+        }
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('magecom_first')->__('No data found to save'));
         $this->_redirect('*/*/');
     }
     public function deleteAction()

@@ -3,7 +3,7 @@
 <config>
     <modules>
         <Magecom_First>
-            <version>1.0.2</version>
+            <version>1.0.4</version>
         </Magecom_First>
     </modules>
     <global>
@@ -29,6 +29,13 @@
             <magecom_first>
                 <class>Magecom_First_Block</class>
             </magecom_first>
+        </blocks>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_view>Magecom_First_Block_Catalog_Product_View</product_view>
+                </rewrite>
+            </catalog>
         </blocks>
         <models>
             <magecom_first>
@@ -104,19 +111,5 @@
                 </magecom_first>
             </updates>
         </layout>
-
-        <events>
-            <cms_page_render>
-                <observers>
-                    <magecom_first>
-                        <type>singleton</type>
-                        <class>magecom_first_model_observer</class>
-                        <method>doublePrice</method>
-                    </magecom_first>
-                </observers>
-            </cms_page_render>
-        </events>
-
-
-    </frontend>
+            </frontend>
 </config>
